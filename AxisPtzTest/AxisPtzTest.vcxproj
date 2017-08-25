@@ -66,7 +66,31 @@
   <ImportGroup Label="Shared" />
   <ImportGroup Label="PropertySheets" />
   <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">
+    <NMakeIncludeSearchPath>C:\MyFiles\Projects\Cpp\glib-master;C:\MyFiles\Projects\Cpp\glib-master\glib;C:\MyFiles\Workspace\20170815_AxisPTZ\emb-app-sdk_2_0_3\target\mipsisa32r2el-axis-linux-gnu\usr\include;C:\MyFiles\Workspace\20170815_AxisPTZ\emb-app-sdk_2_0_3\target\mipsisa32r2el-axis-linux-gnu\include;C:\MyFiles\Workspace\20170815_AxisPTZ\emb-app-sdk_2_0_3\libs\fixmath\fixmath\include;C:\MyFiles\Projects\Cpp\linux\include;$(NMakeIncludeSearchPath)</NMakeIncludeSearchPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM'">
+    <NMakeIncludeSearchPath>C:\MyFiles\Projects\Cpp\glib-master;C:\MyFiles\Projects\Cpp\glib-master\glib;C:\MyFiles\Workspace\20170815_AxisPTZ\emb-app-sdk_2_0_3\target\mipsisa32r2el-axis-linux-gnu\usr\include;C:\MyFiles\Workspace\20170815_AxisPTZ\emb-app-sdk_2_0_3\target\mipsisa32r2el-axis-linux-gnu\include;C:\MyFiles\Workspace\20170815_AxisPTZ\emb-app-sdk_2_0_3\libs\fixmath\fixmath\include;C:\MyFiles\Projects\Cpp\linux\include;$(NMakeIncludeSearchPath)</NMakeIncludeSearchPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <NMakeIncludeSearchPath>C:\MyFiles\Projects\Cpp\glib-master;C:\MyFiles\Projects\Cpp\glib-master\glib;C:\MyFiles\Workspace\20170815_AxisPTZ\emb-app-sdk_2_0_3\target\mipsisa32r2el-axis-linux-gnu\usr\include;C:\MyFiles\Workspace\20170815_AxisPTZ\emb-app-sdk_2_0_3\target\mipsisa32r2el-axis-linux-gnu\include;C:\MyFiles\Workspace\20170815_AxisPTZ\emb-app-sdk_2_0_3\libs\fixmath\fixmath\include;C:\MyFiles\Projects\Cpp\linux\include;$(NMakeIncludeSearchPath)</NMakeIncludeSearchPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <NMakeIncludeSearchPath>C:\MyFiles\Projects\Cpp\glib-master;C:\MyFiles\Projects\Cpp\glib-master\glib;C:\MyFiles\Workspace\20170815_AxisPTZ\emb-app-sdk_2_0_3\target\mipsisa32r2el-axis-linux-gnu\usr\include;C:\MyFiles\Workspace\20170815_AxisPTZ\emb-app-sdk_2_0_3\target\mipsisa32r2el-axis-linux-gnu\include;C:\MyFiles\Workspace\20170815_AxisPTZ\emb-app-sdk_2_0_3\libs\fixmath\fixmath\include;C:\MyFiles\Projects\Cpp\linux\include;$(NMakeIncludeSearchPath)</NMakeIncludeSearchPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x86'">
+    <NMakeIncludeSearchPath>C:\MyFiles\Projects\Cpp\glib-master;C:\MyFiles\Projects\Cpp\glib-master\glib;C:\MyFiles\Workspace\20170815_AxisPTZ\emb-app-sdk_2_0_3\target\mipsisa32r2el-axis-linux-gnu\usr\include;C:\MyFiles\Workspace\20170815_AxisPTZ\emb-app-sdk_2_0_3\target\mipsisa32r2el-axis-linux-gnu\include;C:\MyFiles\Workspace\20170815_AxisPTZ\emb-app-sdk_2_0_3\libs\fixmath\fixmath\include;C:\MyFiles\Projects\Cpp\linux\include;$(NMakeIncludeSearchPath)</NMakeIncludeSearchPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x86'">
+    <NMakeIncludeSearchPath>C:\MyFiles\Projects\Cpp\glib-master;C:\MyFiles\Projects\Cpp\glib-master\glib;C:\MyFiles\Workspace\20170815_AxisPTZ\emb-app-sdk_2_0_3\target\mipsisa32r2el-axis-linux-gnu\usr\include;C:\MyFiles\Workspace\20170815_AxisPTZ\emb-app-sdk_2_0_3\target\mipsisa32r2el-axis-linux-gnu\include;C:\MyFiles\Workspace\20170815_AxisPTZ\emb-app-sdk_2_0_3\libs\fixmath\fixmath\include;C:\MyFiles\Projects\Cpp\linux\include;$(NMakeIncludeSearchPath)</NMakeIncludeSearchPath>
+  </PropertyGroup>
   <ItemGroup>
+    <ClCompile Include="AxisPtzApi.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="Makefile" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="AxisPtzApi.h" />
   </ItemGroup>
   <ItemDefinitionGroup />
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
