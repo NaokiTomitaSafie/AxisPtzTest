@@ -16,18 +16,11 @@
   } while(0)
 
 
-class A
-{
-public:
-	int num;
-	std::string text;
+#define LOOP_ENABLED
 
-	A() :num(5), text("abc") {};
-	~A() {};
-};
-
+#ifdef LOOP_ENABLED
 static GMainLoop *gloop = NULL;
-
+#endif
 
 /*
 * Main
@@ -42,8 +35,9 @@ int main(int argc, char **argv)
 		return 1;
 	}
 
-
+#ifdef LOOP_ENABLED
 	gloop = g_main_loop_new(NULL, FALSE);
+#endif
 
 	AxisPtzTest::AxisPtzApi api;
 
@@ -69,7 +63,7 @@ int main(int argc, char **argv)
 
 			LOGINFO("(pan, tilt, zoom) = (%f, %f, %f)", _p, _t, zoom_f);
 
-			//api.RequestPtzAbsolutePosition(_p, _t, zoom_f, true, true, false);
+			api.RequestPtzAbsolutePosition(_p, _t, zoom_f, true, true, false);
 
 			sleep(1);
 
@@ -78,62 +72,17 @@ int main(int argc, char **argv)
 		}
 
 		LOGINFO("closing...");
-
+#ifdef LOOP_ENABLED
 		if (gloop)
 		{
 			g_main_loop_quit(gloop);
 		}
+#endif
 
 		LOGINFO("closed");
 	});
 
-	/*
-	std::thread t2([&]
-	{
-		gloop = g_main_loop_new(NULL, FALSE);
-
-		g_main_loop_run(gloop);
-
-		g_main_loop_unref(gloop);
-	});
-
-	t1.join();
-	t2.join();*/
-
-
-	/*
-	{
-
-		while (true)
-		{
-			A* a = new A();
-
-			float _p, _t;
-
-			std::cout << "pan" << std::endl;
-			std::cin >> _p;
-
-			std::cout << "tilt" << std::endl;
-			std::cin >> _t;
-
-			if (_p > 1 || _t > 1)
-			{
-				break;
-			}
-
-			LOGINFO("(pan, tilt, zoom) = (%f, %f, %f)", _p, _t, zoom_f);
-
-			api.RequestPtzAbsolutePosition(_p, _t, zoom_f, true, true, false);
-
-			sleep(1);
-
-			LOGINFO("completed");
-
-			delete a;
-		}
-
-	}*/
-
+#ifdef LOOP_ENABLED
 	LOGINFO("loop start");
 
 	g_main_loop_run(gloop);
@@ -143,6 +92,7 @@ int main(int argc, char **argv)
 	g_main_loop_unref(gloop);
 
 	LOGINFO("loop closed");
+#endif
 
 	t1.join();
 
