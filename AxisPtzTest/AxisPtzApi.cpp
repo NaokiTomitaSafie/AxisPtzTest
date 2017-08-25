@@ -35,12 +35,13 @@ using namespace AxisPtzTest;
 AxisPtzApi::AxisPtzApi() :
 	video_channel(1),
 	isAbsTiltSupported(false), isAbsPanSupported(false), isAbsZoomSupported(false),
-	unitless_limits(NULL), unit_limits(NULL),
+	hasWholeLowerHemisphere(false), hasMotor(false),
+	unitless_limits(NULL), unit_limits(NULL), 
+	ax_ptz_control_queue_group(NULL),
 	pan_value(fx_itox(0, FIXMATH_FRAC_BITS)),
 	tilt_value(fx_itox(0, FIXMATH_FRAC_BITS)), 
 	zoom_value(fx_itox(0, FIXMATH_FRAC_BITS)),
-	moveSpeed(0.8f), hasMotor(false), hasWholeLowerHemisphere(false),
-	ax_ptz_control_queue_group(NULL)
+	moveSpeed(0.8f)
 {
 
 
@@ -514,12 +515,12 @@ bool AxisPtzApi::RequestPtzAbsolutePosition
 Perform camera movement to absolute position
 */
 bool AxisPtzApi::move_to_absolute_position(
-	fixed_t pan_value,
-	fixed_t tilt_value,
+	fixed_t pan_p,
+	fixed_t tilt_p,
 	AXPTZMovementPanTiltSpace pan_tilt_space,
 	float speed,
 	AXPTZMovementPanTiltSpeedSpace pan_tilt_speed_space,
-	fixed_t zoom_value, AXPTZMovementZoomSpace zoom_space)
+	fixed_t zoom_p, AXPTZMovementZoomSpace zoom_space)
 {
 
 	AXPTZAbsoluteMovement* abs_movement = NULL;
@@ -536,10 +537,10 @@ bool AxisPtzApi::move_to_absolute_position(
 
 			// Set the pan, tilt and zoom values for the absolute movement
 			if (!(ax_ptz_absolute_movement_set_pan_tilt_zoom(abs_movement,
-				pan_value,
-				tilt_value,
+				pan_p,
+				tilt_p,
 				fx_ftox(speed, FIXMATH_FRAC_BITS),
-				zoom_value,
+				zoom_p,
 				AX_PTZ_MOVEMENT_NO_VALUE,
 				&local_error)))
 			{

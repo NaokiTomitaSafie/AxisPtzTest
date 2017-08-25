@@ -8,6 +8,7 @@ SAFIE_CONFIG_HOST=$(SAFIE_BUILD_TARGET)
 PROGS     = axisptztest
 
 PKGS = glib-2.0 gio-2.0 fixmath axptz
+CFLAGS += -std=c++11
 CFLAGS += $(shell PKG_CONFIG_PATH=$(PKG_CONFIG_LIBDIR) pkg-config --cflags $(PKGS))
 LDLIBS += $(shell PKG_CONFIG_PATH=$(PKG_CONFIG_LIBDIR) pkg-config --libs $(PKGS))
 LDLIBS += -lcapture
